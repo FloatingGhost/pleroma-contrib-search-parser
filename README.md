@@ -1,6 +1,23 @@
 # SearchParser
 
-**TODO: Add description**
+A little NimbleParsec language for pulling data out of a search query
+
+```elixir
+iex(1)> SearchParser.parse!("instance:myinstance.net search terms")
+[{:filter, ["instance", "myinstance.net"]}, "search", "terms"]
+```
+
+Supports filters:
+- instance
+- user
+- hashtag
+
+Also supports quoting terms to group them - for example:
+
+```elixir
+iex(2)> SearchParser.parse!(~S("match this exactly"))              
+[quoted: "match this exactly"]
+```
 
 ## Installation
 
